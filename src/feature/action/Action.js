@@ -1,33 +1,31 @@
-import { ADD_USER, DELETE_USER, EDIT_USER, GET_REQUEST, GET_USER } from "./types"
+import { ADD_USER, DELETE_USER, GET_USER,  UPDATE_USER, USER_ID } from "./types"
 
-export const getRequest = ()=>{
-    return{
-        type:GET_REQUEST
-    }
-}
-export const getUser = (user)=>{
-    return {
-        type:GET_USER,
-        payload:user
-    }
-}
+// export const getRequest = ()=>{
+//     return{
+//         type:GET_REQUEST
+//     }
+// }
 
-export const addUser = (user)=>{
+export const getUser = () => {
     return {
-        type:ADD_USER,
-        payload:user
-    }
-}
+        type: GET_USER,
+    };
+};
 
-export const deleteUser = ()=>{
+export const addUSER = (data) => {
     return {
-        type:DELETE_USER,
-    }
-}
+        type: ADD_USER, payload: data
+    };
+};
+export const updateUSER = (data) => {
+    return {
+        type: UPDATE_USER, payload: data
+    };
+};
+export const deleteUSER = (id) => {
+    return {
+        type: DELETE_USER, payload: id
+    };
+};
 
-export const editUser = (user)=>{
-    return {
-        type:EDIT_USER,
-        payload:user
-    }
-}
+

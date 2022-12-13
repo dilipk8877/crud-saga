@@ -3,8 +3,9 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import "./UserList.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import FormData from "../modal/Modal";
-import {  getUser } from "../../feature/action/Action";
+import {  deleteUSER, getUser, userID} from "../../feature/action/Action";
 import { useDispatch, useSelector } from "react-redux";
+import { DELETE_USER, GET_REQUEST, GET_USER } from "../../feature/action/types";
 const UserList = () => {
   const [toggleUpdate, setToggleUpdate] = useState(true);
   const [show, setShow] = useState(false);
@@ -13,23 +14,33 @@ const UserList = () => {
     email: "",
     phone: "",
   });
-  const userList = useSelector((state) => state.userList.user);
+  const [userID,setUserID]= useState(null)
+  const userList = useSelector((state) => state.getList.user);
+  const addUser = useSelector((state) => state.addUser.user);
+  const deleteUSer = useSelector((state) => state.deleteUSer.user);
+  const updatedUser = useSelector((state) => state.updatedUser.user);
+
+
+
   const dispatch = useDispatch();
   const handleShow = () => {
     setShow(true);
   };
   const handleEdit = (user) => {
-    console.log(user);
+    console.log(user)
     setToggleUpdate(false);
-    // dispatch(editUser(user))
     setShow(true);
     setUserData(userData);
+    setUserID(user.id)
   };
+
+  const handleDelete = (user)=>{
+    dispatch(deleteUSER(user.id))
+  }
 
   useEffect(() => {
     dispatch(getUser());
-    // dispatch(getRequest())
-  }, [dispatch]);
+  },[dispatch,addUser,deleteUSer,updatedUser]);
   return (
     <div className="user-conatiner position-relative">
       <Row md={4} className="g-4">
@@ -43,7 +54,7 @@ const UserList = () => {
                   <Card.Text>{user.phone}</Card.Text>
                   <div className="d-flex justify-content-around">
                     <Button variant="secondary" onClick={()=>handleEdit(user)}>Update</Button>
-                    <Button variant="secondary">Delete</Button>
+                    <Button variant="secondary" onClick={()=>handleDelete(user)}>Delete</Button>
                   </div>
                 </Card.Body>
               </Card>
@@ -62,6 +73,7 @@ const UserList = () => {
         setUserData={setUserData}
         setToggleUpdate={setToggleUpdate}
         toggleUpdate={toggleUpdate}
+        userID={userID}
       />
     </div>
   );

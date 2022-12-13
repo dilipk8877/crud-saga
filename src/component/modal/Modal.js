@@ -4,14 +4,16 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { addUSER, updateUSER } from "../../feature/action/Action";
+import { UPDATE_USER } from "../../feature/action/types";
 
-const FormData = ({ show, setShow,setUserData,userData,toggleUpdate,setToggleUpdate}) => {
+const FormData = ({userID, show, setShow,setUserData,userData,toggleUpdate,setToggleUpdate}) => {
 
   const handleClose = () =>{
     setShow(false);
     setToggleUpdate(true)
   } 
-
+const dispatch= useDispatch()
 //   const {toggleUpdate,modalOpen} = useSelector((state) => state.users);
 //   const dispatch = useDispatch();
 
@@ -24,11 +26,15 @@ const FormData = ({ show, setShow,setUserData,userData,toggleUpdate,setToggleUpd
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(addUSER(userData))
+    setShow(false)
+    setUserData("")
   };
 
-  const handleUpdate = (e) => {
-
+  const handleUpdate = () => {
+    setShow(false)
+    dispatch({type:UPDATE_USER,userData,userID})
+    setUserData(userData)
   };
   return (
     <div>
@@ -75,13 +81,13 @@ const FormData = ({ show, setShow,setUserData,userData,toggleUpdate,setToggleUpd
               </Button>
               {toggleUpdate ? (
                 <Button variant="primary"
-                //  onClick={handleSubmit}
+                 onClick={handleSubmit}
                  >
                   Save
                 </Button>
               ) : (
                 <Button variant="primary"
-                //  onClick={handleUpdate}
+                 onClick={handleUpdate}
                  >
                   Update 
                 </Button>
