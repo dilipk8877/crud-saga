@@ -5,7 +5,6 @@ const initialState = {
 }
 
  const updatedUser = (state=initialState,action)=>{
-
     switch(action.type){
         case UPDATED_USER:
             return{

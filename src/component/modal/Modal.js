@@ -2,9 +2,9 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addUSER, updateUSER } from "../../feature/action/Action";
+import { addUSER} from "../../feature/action/Action";
 import { UPDATE_USER } from "../../feature/action/types";
 
 const FormData = ({userID, show, setShow,setUserData,userData,toggleUpdate,setToggleUpdate}) => {
@@ -14,8 +14,7 @@ const FormData = ({userID, show, setShow,setUserData,userData,toggleUpdate,setTo
     setToggleUpdate(true)
   } 
 const dispatch= useDispatch()
-//   const {toggleUpdate,modalOpen} = useSelector((state) => state.users);
-//   const dispatch = useDispatch();
+
 
 
   const handleChange = (e) => {

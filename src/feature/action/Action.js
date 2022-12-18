@@ -1,10 +1,4 @@
-import { ADD_USER, DELETE_USER, GET_USER,  UPDATE_USER, USER_ID } from "./types"
-
-// export const getRequest = ()=>{
-//     return{
-//         type:GET_REQUEST
-//     }
-// }
+import { ADD_USER, DELETE_USER, GET_USER,  UPDATE_USER } from "./types"
 
 export const getUser = () => {
     return {

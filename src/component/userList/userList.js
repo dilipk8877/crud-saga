@@ -3,9 +3,9 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import "./UserList.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import FormData from "../modal/Modal";
-import {  deleteUSER, getUser, userID} from "../../feature/action/Action";
+import {  deleteUSER, getUser } from "../../feature/action/Action";
 import { useDispatch, useSelector } from "react-redux";
-import { DELETE_USER, GET_REQUEST, GET_USER } from "../../feature/action/types";
+
 const UserList = () => {
   const [toggleUpdate, setToggleUpdate] = useState(true);
   const [show, setShow] = useState(false);
@@ -30,7 +30,7 @@ const UserList = () => {
     console.log(user)
     setToggleUpdate(false);
     setShow(true);
-    setUserData(userData);
+    setUserData(user);
     setUserID(user.id)
   };
 

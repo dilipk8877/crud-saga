@@ -8,9 +8,8 @@ import addUserSaga from './feature/saga/addUserSaga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middleware = [sagaMiddleware]
 
-const store = createStore(rootReducer,applyMiddleware(...middleware))
+const store = createStore(rootReducer,applyMiddleware(sagaMiddleware))
 
 export default store
 

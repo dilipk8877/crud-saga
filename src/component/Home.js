@@ -1,9 +1,8 @@
 import React from 'react'
 import UserList from './userList/userList'
-import "./Home"
 const Home = () => {
   return (
-    <div className='userList'>
+    <div style={{display:"flex",justifyContent:"center"}}>
         <UserList/>
     </div>
   )
